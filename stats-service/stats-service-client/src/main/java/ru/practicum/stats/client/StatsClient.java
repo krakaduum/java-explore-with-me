@@ -9,8 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.util.DefaultUriBuilderFactory;
 import ru.practicum.stats.dto.EndpointHitDto;
 
-import java.time.LocalDateTime;
-import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -30,11 +29,11 @@ public class StatsClient extends BaseClient {
         return post("/hit", endpointHit);
     }
 
-    public ResponseEntity<Object> readAll(LocalDateTime start, LocalDateTime end, Collection<String> uris, Boolean unique) {
+    public ResponseEntity<Object> readAll(String start, String end, List<String> uris, Boolean unique) {
         Map<String, Object> parameters = Map.of(
-                "start", start,
-                "end", end,
-                "uris", uris,
+                "start", encodeValue(start),
+                "end", encodeValue(end),
+                "uris", uris.toArray(),
                 "unique", unique
         );
 

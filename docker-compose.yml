@@ -33,6 +33,11 @@ services:
       - "8080:8080"
     depends_on:
       - ewm-db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://ewm-db:5432/ewm
+      - SPRING_DATASOURCE_USER=postgres
+      - SPRING_DATASOURCE_PASSWORD=root
+      - STATS_SERVER_URL=http://stats-server:9090
     restart: on-failure
 
   ewm-db:
