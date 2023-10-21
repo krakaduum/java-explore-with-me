@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import ru.practicum.constant.Constants;
 import ru.practicum.dto.EventFullDto;
 import ru.practicum.dto.UpdateEventAdminRequest;
 import ru.practicum.service.admin_service.AdminEventService;
@@ -23,9 +24,9 @@ public class AdminEventController {
     Collection<EventFullDto> getEvents(@RequestParam(required = false) Collection<Long> users,
                                        @RequestParam(required = false) Collection<String> states,
                                        @RequestParam(required = false) Collection<Long> categories,
-                                       @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+                                       @RequestParam(required = false) @DateTimeFormat(pattern = Constants.DateTimePattern)
                                        LocalDateTime rangeStart,
-                                       @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+                                       @RequestParam(required = false) @DateTimeFormat(pattern = Constants.DateTimePattern)
                                        LocalDateTime rangeEnd,
                                        @RequestParam(defaultValue = "0") Integer from,
                                        @RequestParam(defaultValue = "10") Integer size) {

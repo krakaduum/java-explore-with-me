@@ -5,6 +5,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import ru.practicum.constant.Constants;
 import ru.practicum.dto.ApiError;
 import ru.practicum.exception.InvalidDateException;
 import ru.practicum.exception.InvalidParamException;
@@ -16,7 +17,7 @@ import java.util.stream.Collectors;
 
 @RestControllerAdvice
 public class ExceptionHandler {
-    private final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    private final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(Constants.DateTimePattern);
 
     @org.springframework.web.bind.annotation.ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)

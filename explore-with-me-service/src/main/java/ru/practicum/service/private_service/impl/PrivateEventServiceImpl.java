@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.practicum.constant.Constants;
 import ru.practicum.dto.*;
 import ru.practicum.exception.InvalidDateException;
 import ru.practicum.exception.InvalidParamException;
@@ -103,7 +104,7 @@ public class PrivateEventServiceImpl implements PrivateEventService {
     public EventFullDto updateEvent(long userId, long eventId, UpdateEventUserRequest updateRequest) {
         if (updateRequest.getEventDate() != null) {
             LocalDateTime eventDate = LocalDateTime
-                    .parse(updateRequest.getEventDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+                    .parse(updateRequest.getEventDate(), DateTimeFormatter.ofPattern(Constants.DateTimePattern));
 
             if (eventDate.isBefore(LocalDateTime.now().plus(2, ChronoUnit.HOURS))) {
                 throw new InvalidDateException("Дата и время, на которые намечено событие, не могут быть раньше, чем " +

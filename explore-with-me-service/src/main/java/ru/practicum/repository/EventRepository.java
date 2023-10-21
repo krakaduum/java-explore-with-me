@@ -9,10 +9,11 @@ import ru.practicum.model.Event;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.Set;
 
 @Repository
 public interface EventRepository extends JpaRepository<Event, Long> {
-    Collection<Event> findAllByIdIn(Collection<Long> events);
+    Set<Event> findAllByIdIn(Collection<Long> events);
 
     Collection<Event> findAllByCategoryId(Long categoryId);
 

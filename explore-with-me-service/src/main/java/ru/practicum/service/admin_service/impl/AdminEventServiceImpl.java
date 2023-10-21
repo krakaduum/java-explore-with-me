@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.practicum.constant.Constants;
 import ru.practicum.dto.EventFullDto;
 import ru.practicum.dto.UpdateEventAdminRequest;
 import ru.practicum.exception.InvalidDateException;
@@ -55,7 +56,7 @@ public class AdminEventServiceImpl implements AdminEventService {
 
         if (request.getEventDate() != null) {
             LocalDateTime newEventDate = LocalDateTime.parse(request.getEventDate(),
-                    DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+                    DateTimeFormatter.ofPattern(Constants.DateTimePattern));
 
             if (newEventDate.isBefore(LocalDateTime.now())) {
                 throw new InvalidDateException("Новая дата начала должна быть в будущем");
@@ -103,7 +104,7 @@ public class AdminEventServiceImpl implements AdminEventService {
 
         if (request.getEventDate() != null) {
             event.setEventDate(LocalDateTime.parse(request.getEventDate(),
-                    DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+                    DateTimeFormatter.ofPattern(Constants.DateTimePattern)));
         }
 
         if (request.getLocation() != null) {

@@ -3,6 +3,7 @@ package ru.practicum.controller.public_api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
+import ru.practicum.constant.Constants;
 import ru.practicum.dto.EventFullDto;
 import ru.practicum.dto.EventShortDto;
 import ru.practicum.service.public_service.PublicEventService;
@@ -21,9 +22,9 @@ public class PublicEventController {
     public Collection<EventShortDto> getEvents(@RequestParam(required = false) String text,
                                                @RequestParam(required = false) Collection<Long> categories,
                                                @RequestParam(required = false) Boolean paid,
-                                               @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+                                               @RequestParam(required = false) @DateTimeFormat(pattern = Constants.DateTimePattern)
                                                LocalDateTime rangeStart,
-                                               @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+                                               @RequestParam(required = false) @DateTimeFormat(pattern = Constants.DateTimePattern)
                                                LocalDateTime rangeEnd,
                                                @RequestParam(required = false, defaultValue = "false") Boolean onlyAvailable,
                                                @RequestParam(required = false) String sortBy,

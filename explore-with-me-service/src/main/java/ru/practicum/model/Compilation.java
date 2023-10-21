@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Collection;
+import java.util.Set;
 
 @AllArgsConstructor
 @Data
@@ -28,7 +28,7 @@ public class Compilation {
     @JoinTable(name = "events_compilations",
             joinColumns = @JoinColumn(name = "compilation_id"),
             inverseJoinColumns = @JoinColumn(name = "event_id"))
-    private Collection<Event> events;
+    private Set<Event> events;
 
     public Compilation(String title, boolean pinned) {
         this.title = title;
