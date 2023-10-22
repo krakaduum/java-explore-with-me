@@ -39,7 +39,7 @@ public interface StatsRepository extends JpaRepository<EndpointHit, Long> {
             "GROUP BY hits.app, hits.uri " +
             "ORDER BY (hits.uri) DESC")
     Collection<ViewStats> findAllStats(LocalDateTime start,
-                                              LocalDateTime end);
+                                       LocalDateTime end);
 
     @Query("SELECT new ru.practicum.stats.server.model.ViewStats(" +
             "hits.app, hits.uri, COUNT(DISTINCT hits.ip)) " +
@@ -48,5 +48,5 @@ public interface StatsRepository extends JpaRepository<EndpointHit, Long> {
             "GROUP BY hits.app, hits.uri " +
             "ORDER BY COUNT(DISTINCT hits.ip) DESC")
     Collection<ViewStats> findUniqueStats(LocalDateTime start,
-                                                 LocalDateTime end);
+                                          LocalDateTime end);
 }

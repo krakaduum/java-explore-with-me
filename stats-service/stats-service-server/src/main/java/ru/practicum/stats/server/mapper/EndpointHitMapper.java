@@ -12,7 +12,6 @@ import java.time.format.DateTimeFormatter;
 public class EndpointHitMapper {
 
 
-
     public static EndpointHitDto toEndpointHitDto(EndpointHit endpointHit) {
         return new EndpointHitDto(
                 endpointHit.getId(),
